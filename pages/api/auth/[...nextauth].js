@@ -1,10 +1,7 @@
 import NextAuth from "next-auth"
-import Providers from "next-auth/providers"
 import { PrismaAdapter } from "@next-auth/prisma-adapter"
-import { PrismaClient } from "@prisma/client"
 import {db} from "../../../lib/PtismClient"
 import CredentialsProvider from "next-auth/providers/credentials";
-import { error } from "console";
 import bcrypt from "bcrypt";
 
 
