@@ -41,16 +41,56 @@ model Session {
 }
 
 model User {
-  id            String    @id @default(cuid())
+  id            String      @id @default(cuid())
   name          String
   password      String
-  email         String    @unique
+  email         String      @unique
   emailVerified DateTime?
-  image         String
-  createdAt     DateTime  @default(now())
-  updatedAt     DateTime  @updatedAt
+  image         String?
+  about         String?
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
   accounts      Account[]
   sessions      Session[]
+  questions     questions[]
+  answers       answers[]
+  reply         reply[]
+}
+
+model questions {
+  id          String    @id @default(uuid())
+  title       String
+  description String    @db.Text
+  expection   String    @db.Text
+  askedById   String
+  askedBy     User      @relation(fields: [askedById], references: [id], onDelete: Cascade)
+  answers     answers[]
+  tags        String[]
+  createdAt   DateTime  @default(now())
+  updatedAT   DateTime  @updatedAt
+}
+
+model answers {
+  id           String    @id @default(uuid())
+  questionId   String
+  question     questions @relation(fields: [questionId], references: [id], onDelete: Cascade)
+  answeredById String
+  answeredBy   User      @relation(fields: [answeredById], references: [id], onDelete: Cascade)
+  answer       String    @db.Text
+  replies      reply[]
+  createdAt    DateTime  @default(now())
+  updatedAT    DateTime  @updatedAt
+}
+
+model reply {
+  id          String   @id @default(uuid())
+  answerId    String
+  answer      answers  @relation(fields: [answerId], references: [id], onDelete: Cascade)
+  text        String
+  replyedById String
+  replyedBy   User     @relation(fields: [replyedById], references: [id], onDelete: Cascade)
+  createdAt   DateTime @default(now())
+  updatedAT   DateTime @updatedAt
 }
 
 model VerificationRequest {
