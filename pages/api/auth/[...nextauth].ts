@@ -1,14 +1,13 @@
-import NextAuth from "next-auth"
-import { PrismaAdapter } from "@next-auth/prisma-adapter"
-import {db} from "../../../lib/PtismClient"
+import NextAuth, { AuthOptions } from "next-auth";
+import { PrismaAdapter } from "@next-auth/prisma-adapter";
+import { db } from "../../../lib/PtismClient";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
 import bcrypt from "bcrypt";
 
-
-export default NextAuth({
+export const authOptions: AuthOptions = {
   providers: [
-      CredentialsProvider({
+    CredentialsProvider({
       name: "credentials",
       credentials: {
         email: { label: "email", type: "email" },
@@ -51,4 +50,6 @@ export default NextAuth({
   },
   secret: process.env.NEXTAUTH_SECRET,
   adapter: PrismaAdapter(db),
-})
+};
+
+export default NextAuth(authOptions);
