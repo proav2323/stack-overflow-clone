@@ -73,78 +73,7 @@ export default function Sidebar({currentUser, mobile, set} : {currentUser: User 
           </button>
       </div>
 
-            <div className='w-full ml-[15%]'>
-        <button onClick={() => route("/saves")} className={` ${path === '/saves' ? "w-full p-2 transition ease-in-out duration-200 rounded-md flex justify-center items-center gap-2  backdrop-blur-md dark:bg-white/30 bg-black/30 " : "w-full p-2 transition ease-in-out duration-200 rounded-md flex justify-center items-center gap-2 dark:hover:bg-neutral-700 hover:bg-neutral-200"}`}>
-          <Save size={18} />
-          <span className='text-base font-bold'>Saves</span>
-          </button>
-          <button onClick={() => route("/users")} className={`${path?.includes('/users') ? "w-full p-2 transition ease-in-out duration-200 rounded-md flex justify-center items-center gap-2  backdrop-blur-md dark:bg-white/30 bg-black/30 " : "w-full p-2 transition ease-in-out duration-200 rounded-md flex justify-center items-center gap-2 dark:hover:bg-neutral-700 hover:bg-neutral-200 "}`}>
-          <Users size={18} />
-          <span className='text-base font-bold'>Users</span>
-          </button>
-      </div>
-
-            <div className='w-full ml-[15%]'>
-        <button onClick={() => route("/saves")} className={` ${path === '/saves' ? "w-full p-2 transition ease-in-out duration-200 rounded-md flex justify-center items-center gap-2  backdrop-blur-md dark:bg-white/30 bg-black/30 " : "w-full p-2 transition ease-in-out duration-200 rounded-md flex justify-center items-center gap-2 dark:hover:bg-neutral-700 hover:bg-neutral-200"}`}>
-          <Save size={18} />
-          <span className='text-base font-bold'>Saves</span>
-          </button>
-          <button onClick={() => route("/users")} className={`${path?.includes('/users') ? "w-full p-2 transition ease-in-out duration-200 rounded-md flex justify-center items-center gap-2  backdrop-blur-md dark:bg-white/30 bg-black/30 " : "w-full p-2 transition ease-in-out duration-200 rounded-md flex justify-center items-center gap-2 dark:hover:bg-neutral-700 hover:bg-neutral-200 "}`}>
-          <Users size={18} />
-          <span className='text-base font-bold'>Users</span>
-          </button>
-      </div>
-
-            <div className='w-full ml-[15%]'>
-        <button onClick={() => route("/saves")} className={` ${path === '/saves' ? "w-full p-2 transition ease-in-out duration-200 rounded-md flex justify-center items-center gap-2  backdrop-blur-md dark:bg-white/30 bg-black/30 " : "w-full p-2 transition ease-in-out duration-200 rounded-md flex justify-center items-center gap-2 dark:hover:bg-neutral-700 hover:bg-neutral-200"}`}>
-          <Save size={18} />
-          <span className='text-base font-bold'>Saves</span>
-          </button>
-          <button onClick={() => route("/users")} className={`${path?.includes('/users') ? "w-full p-2 transition ease-in-out duration-200 rounded-md flex justify-center items-center gap-2  backdrop-blur-md dark:bg-white/30 bg-black/30 " : "w-full p-2 transition ease-in-out duration-200 rounded-md flex justify-center items-center gap-2 dark:hover:bg-neutral-700 hover:bg-neutral-200 "}`}>
-          <Users size={18} />
-          <span className='text-base font-bold'>Users</span>
-          </button>
-      </div>
-            <div className='w-full ml-[15%]'>
-        <button onClick={() => route("/saves")} className={` ${path === '/saves' ? "w-full p-2 transition ease-in-out duration-200 rounded-md flex justify-center items-center gap-2  backdrop-blur-md dark:bg-white/30 bg-black/30 " : "w-full p-2 transition ease-in-out duration-200 rounded-md flex justify-center items-center gap-2 dark:hover:bg-neutral-700 hover:bg-neutral-200"}`}>
-          <Save size={18} />
-          <span className='text-base font-bold'>Saves</span>
-          </button>
-          <button onClick={() => route("/users")} className={`${path?.includes('/users') ? "w-full p-2 transition ease-in-out duration-200 rounded-md flex justify-center items-center gap-2  backdrop-blur-md dark:bg-white/30 bg-black/30 " : "w-full p-2 transition ease-in-out duration-200 rounded-md flex justify-center items-center gap-2 dark:hover:bg-neutral-700 hover:bg-neutral-200 "}`}>
-          <Users size={18} />
-          <span className='text-base font-bold'>Users</span>
-          </button>
-      </div>
-
-            <div className='w-full ml-[15%]'>
-        <button onClick={() => route("/saves")} className={` ${path === '/saves' ? "w-full p-2 transition ease-in-out duration-200 rounded-md flex justify-center items-center gap-2  backdrop-blur-md dark:bg-white/30 bg-black/30 " : "w-full p-2 transition ease-in-out duration-200 rounded-md flex justify-center items-center gap-2 dark:hover:bg-neutral-700 hover:bg-neutral-200"}`}>
-          <Save size={18} />
-          <span className='text-base font-bold'>Saves</span>
-          </button>
-          <button onClick={() => route("/users")} className={`${path?.includes('/users') ? "w-full p-2 transition ease-in-out duration-200 rounded-md flex justify-center items-center gap-2  backdrop-blur-md dark:bg-white/30 bg-black/30 " : "w-full p-2 transition ease-in-out duration-200 rounded-md flex justify-center items-center gap-2 dark:hover:bg-neutral-700 hover:bg-neutral-200 "}`}>
-          <Users size={18} />
-          <span className='text-base font-bold'>Users</span>
-          </button>
-      </div>
-            <div className='w-full ml-[15%]'>
-        <button onClick={() => route("/saves")} className={` ${path === '/saves' ? "w-full p-2 transition ease-in-out duration-200 rounded-md flex justify-center items-center gap-2  backdrop-blur-md dark:bg-white/30 bg-black/30 " : "w-full p-2 transition ease-in-out duration-200 rounded-md flex justify-center items-center gap-2 dark:hover:bg-neutral-700 hover:bg-neutral-200"}`}>
-          <Save size={18} />
-          <span className='text-base font-bold'>Saves</span>
-          </button>
-          <button onClick={() => route("/users")} className={`${path?.includes('/users') ? "w-full p-2 transition ease-in-out duration-200 rounded-md flex justify-center items-center gap-2  backdrop-blur-md dark:bg-white/30 bg-black/30 " : "w-full p-2 transition ease-in-out duration-200 rounded-md flex justify-center items-center gap-2 dark:hover:bg-neutral-700 hover:bg-neutral-200 "}`}>
-          <Users size={18} />
-          <span className='text-base font-bold'>Users</span>
-          </button>
-      </div>      <div className='w-full ml-[15%]'>
-        <button onClick={() => route("/saves")} className={` ${path === '/saves' ? "w-full p-2 transition ease-in-out duration-200 rounded-md flex justify-center items-center gap-2  backdrop-blur-md dark:bg-white/30 bg-black/30 " : "w-full p-2 transition ease-in-out duration-200 rounded-md flex justify-center items-center gap-2 dark:hover:bg-neutral-700 hover:bg-neutral-200"}`}>
-          <Save size={18} />
-          <span className='text-base font-bold'>Saves</span>
-          </button>
-          <button onClick={() => route("/users")} className={`${path?.includes('/users') ? "w-full p-2 transition ease-in-out duration-200 rounded-md flex justify-center items-center gap-2  backdrop-blur-md dark:bg-white/30 bg-black/30 " : "w-full p-2 transition ease-in-out duration-200 rounded-md flex justify-center items-center gap-2 dark:hover:bg-neutral-700 hover:bg-neutral-200 "}`}>
-          <Users size={18} />
-          <span className='text-base font-bold'>Users</span>
-          </button>
-      </div>
+   
     </div>
     <div className='h-[100vh] flex md:hidden'>
       <div className='md:hidden fixed bottom-0 left-0 md:w-[20%] w-[90%] p-2 shadow-2xl dark:shadow-neutral-700 bg-white dark:bg-neutral-900 h-[10vh] transition-all ease-in-out duration-500 flex flex-row justify-cneter items-center gap-2 my-auto'>
