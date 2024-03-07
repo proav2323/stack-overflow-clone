@@ -1,9 +1,6 @@
 "use client"
 import { LogIn, MenuIcon, Plus, Search, X } from 'lucide-react'
 import React, { useEffect, useState } from 'react'
-import LOGO from "../public/logo.png"
-import DLOGO from "../public/dark.png"
-import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { useTheme } from 'next-themes'
 import { Button } from './ui/button'
@@ -37,8 +34,8 @@ export default function Navbar({currentUser} : {currentUser: User | null}) {
     }
   }, [setIsMid])
   return (
-    <>
-    <div className='w-full p-2 bg-white dark:bg-neutral-800 shadow-2xl dark:shadow-neutral-700 h-[60px] flex flex-row justify-between items-center gap-2 sticky top-0'>
+    <div className='w-full sticky top-0'>
+    <div className='w-full p-2 bg-white dark:bg-neutral-800 shadow-2xl dark:shadow-neutral-700 h-[60px] flex flex-row justify-between items-center gap-2'>
       {isOpen ? <X className='md:hidden transition' size={18} onClick={() => setOpen((value) => !value)} /> : <MenuIcon className='md:hidden transition' size={18} onClick={() => setOpen((value) => !value)} />}
       <div className='hidden md:flex flex-row gap-1 items-center dark:text-white text-black' onClick={() => router.push("/")}>
       </div>
@@ -56,7 +53,7 @@ export default function Navbar({currentUser} : {currentUser: User | null}) {
                       <div className='flex flex-row gap-2 items-center justify-center'>
 <TooltipProvider>
   <Tooltip>
-    <TooltipTrigger>
+    <TooltipTrigger asChild>
           <Button variant={"link"} className='m-1 p-1'><Plus size={18} /></Button>
     </TooltipTrigger>
     <TooltipContent>
@@ -72,6 +69,11 @@ export default function Navbar({currentUser} : {currentUser: User | null}) {
   <AvatarFallback>{fullname[0].charAt(0)} {fullname[1].charAt(0)}</AvatarFallback>
 </Avatar>
             </DropdownMenuTrigger>
+            <DropdownMenuContent>
+              <DropdownMenuItem>Profile</DropdownMenuItem>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem>Logout</DropdownMenuItem>
+            </DropdownMenuContent>
           </DropdownMenu>
                       </div>
         ) : (
@@ -89,7 +91,9 @@ export default function Navbar({currentUser} : {currentUser: User | null}) {
 </Avatar>
             </DropdownMenuTrigger>
             <DropdownMenuContent>
+                            <DropdownMenuItem>Profile</DropdownMenuItem>
               <DropdownMenuSeparator />
+              <DropdownMenuItem>Logout</DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         ) : (
@@ -100,6 +104,6 @@ export default function Navbar({currentUser} : {currentUser: User | null}) {
     <div className={` md:hidden fixed top-0 left-0 w-[90%] transition-all ease-in-out duration-500 ${isOpen ? 'translate-x-[0%]' : '-translate-x-[110%]'}`}>
       <Sidebar currentUser={currentUser} mobile={true} set={setOpen} />
     </div>
-    </>
+    </div>
   )
 }
