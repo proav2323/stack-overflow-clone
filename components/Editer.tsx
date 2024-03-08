@@ -6,7 +6,7 @@ import Underline from '@tiptap/extension-underline'
 import Toolbar from './Toolbar'
 import Heading from '@tiptap/extension-heading'
 
-const Editer = ({value, setValue, id, edit}: {value: string, setValue: ((id: "description" | "expectation", value: string) => void) | undefined, id: "description" | "expectation" | undefined, edit: boolean}) => {
+const Editer = ({value, setValue, id, edit, classN = "flex-col flex py-2 px-4 dark:border-slate-800 border-slate-200 border-[1px] rounded-b-md outline-none"}: {value: string, setValue: ((id: "description" | "expectation", value: string) => void) | undefined, id: "description" | "expectation" | undefined, edit: boolean, classN?: string}) => {
   const editor = useEditor({
     extensions: [
       StarterKit,
@@ -20,7 +20,7 @@ const Editer = ({value, setValue, id, edit}: {value: string, setValue: ((id: "de
     ],
     editorProps: {
         attributes: {
-            class: "flex-col flex py-2 px-4 dark:border-slate-800 border-slate-200 border-[1px] rounded-b-md outline-none"
+            class: classN
         }
     },
     onUpdate: ({editor}) => {
