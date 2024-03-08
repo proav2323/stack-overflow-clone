@@ -1,8 +1,9 @@
+import { User } from "@prisma/client";
 import { create } from "zustand";
 
 export type modelType =
   | "Login"
-  | "register";
+  | "register" | "addQuestion";
 
 export interface modelStore {
   type: modelType | null;
@@ -13,6 +14,7 @@ export interface modelStore {
 }
 
 interface modelData {
+  currentUser?: User
 }
 
 export const useModal = create<modelStore>((set) => ({

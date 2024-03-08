@@ -54,7 +54,7 @@ export default function Navbar({currentUser} : {currentUser: User | null}) {
 <TooltipProvider>
   <Tooltip>
     <TooltipTrigger asChild>
-          <Button variant={"link"} className='m-1 p-1'><Plus size={18} /></Button>
+          <Button onClick={() => onOpen("addQuestion", {currentUser})} variant={"link"} className='m-1 p-1'><Plus size={18} /></Button>
     </TooltipTrigger>
     <TooltipContent>
       <p>Add Question</p>
@@ -91,7 +91,8 @@ export default function Navbar({currentUser} : {currentUser: User | null}) {
 </Avatar>
             </DropdownMenuTrigger>
             <DropdownMenuContent>
-                            <DropdownMenuItem>Profile</DropdownMenuItem>
+              <DropdownMenuItem onClick={() => onOpen("addQuestion", {currentUser})}>Add Question</DropdownMenuItem>
+              <DropdownMenuItem>Profile</DropdownMenuItem>
               <DropdownMenuSeparator />
               <DropdownMenuItem>Logout</DropdownMenuItem>
             </DropdownMenuContent>
