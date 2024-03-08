@@ -6,7 +6,7 @@ import Underline from '@tiptap/extension-underline'
 import Toolbar from './Toolbar'
 import Heading from '@tiptap/extension-heading'
 
-const Editer = ({value, setValue, id}: {value: string, setValue: (id: "description" | "expectation", value: string) => void, id: "description" | "expectation"}) => {
+const Editer = ({value, setValue, id, edit}: {value: string, setValue: ((id: "description" | "expectation", value: string) => void) | undefined, id: "description" | "expectation" | undefined, edit: boolean}) => {
   const editor = useEditor({
     extensions: [
       StarterKit,
@@ -24,14 +24,16 @@ const Editer = ({value, setValue, id}: {value: string, setValue: (id: "descripti
         }
     },
     onUpdate: ({editor}) => {
+      if (setValue !== undefined && id !== undefined) {
         setValue(id, editor.getHTML())
+      }
     },
-    
+    editable: edit,
   })
 
   return (
-    <div className='flex flex-col w-full'>
-    <Toolbar editor={editor} content={value} />
+  <div className='flex flex-col w-full'>
+    <Toolbar editor={editor} content={value} edit={edit} />
     <EditorContent style={{whiteSpace: "pre-line"}} editor={editor} />
   </div>
   )

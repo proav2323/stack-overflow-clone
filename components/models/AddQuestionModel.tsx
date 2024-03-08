@@ -85,7 +85,8 @@ export default function AddQuestionModel() {
         />
             
             <div>
-                <Editer id="description" value={Description} setValue={(id, val) => setValue(id, val)} />
+                <Editer edit id="description" value={Description} setValue={(id, val) => setValue(id, val)} />
+                <Editer edit={false} value={Description} id={undefined} setValue={undefined} />
             </div>
                         </form>
                     </Form>

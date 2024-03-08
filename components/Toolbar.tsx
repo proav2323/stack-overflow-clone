@@ -6,8 +6,8 @@ import { Button } from './ui/button';
 import { Bold, Heading1, Heading2, Heading3, Heading4, Heading5, Heading6, Italic, Underline } from 'lucide-react';
 import { Toggle } from './ui/toggle';
 
-export default function Toolbar({editor, content}: {editor: Editor | null, content: string}) {
-    if (!editor) {
+export default function Toolbar({editor, content, edit}: {editor: Editor | null, content: string, edit: boolean}) {
+    if (!editor || !edit) {
         return null;
     }
 
