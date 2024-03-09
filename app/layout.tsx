@@ -24,7 +24,7 @@ export default async function RootLayout({
   const user: User | null = await getCurrentUser();
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={inter.className}> 
         <ThemeProvider
             attribute="class"
             defaultTheme="light"
