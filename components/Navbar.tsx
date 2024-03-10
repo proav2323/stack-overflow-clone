@@ -61,7 +61,7 @@ export default function Navbar({currentUser} : {currentUser: User | null}) {
       </div>
       <div className='hidden md:flex flex-row justify-center items-center w-[50%]'>
         <input type='search' onChange={(e) => setSearch(e.target.value)} className='p-2 h-[40px] rounded-l-md w-full dark:bg-neutral-700 bg-neutral-300 focus:outline-none' placeholder='Search' value={search} onKeyDown={(e) => {
-          if (e.key === "enter") {
+          if (e.key === "Enter") {
             saech()
           }
         }} />

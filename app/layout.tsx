@@ -8,6 +8,7 @@ import getCurrentUser from "@/actions/getCurrentUser";
 import { User } from "@prisma/client";
 import ModelProvider from "@/components/providers/ModelProvider";
 import { Toaster } from "react-hot-toast";
+import { Suspense } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -30,6 +31,7 @@ export default async function RootLayout({
             defaultTheme="light"
           >
             <ModelProvider />
+      <Suspense>
             <Toaster />
             <div className="flex flex-row justify-center items-start w-full">
               <div className="flex-[0.2] w-full hidden flex-col justify-start items-start md:flex">
@@ -40,6 +42,7 @@ export default async function RootLayout({
                    {children}
               </div>
             </div>
+      </Suspense>
           </ThemeProvider>
         </body>
     </html>
