@@ -1,7 +1,7 @@
 "use client"
 import { LogIn, MenuIcon, Plus, Search, X } from 'lucide-react'
 import React, { useEffect, useState } from 'react'
-import { useRouter } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import { useTheme } from 'next-themes'
 import { Button } from './ui/button'
 import { User } from '@prisma/client'
@@ -17,6 +17,7 @@ import {
 } from "@/components/ui/tooltip"
 
 import { useModal } from '@/hooks/useModel'
+import ProfiEImage from './Profi.eImage'
 
 export default function Navbar({currentUser} : {currentUser: User | null}) {
   const router = useRouter();
@@ -25,6 +26,14 @@ export default function Navbar({currentUser} : {currentUser: User | null}) {
   const [isMid, setIsMid] = useState(false);
   const [isOpen, setOpen] = useState(false);
   const {onOpen} = useModal()
+  const searchP = useSearchParams();
+  const [search, setSearch] = useState("");
+
+  const saech = () => {
+    if (search !== "") {
+        router.push(`/search?search=${search}`)
+    }
+  }
 
   useEffect(() => {
     if (window.innerWidth > 760) {
@@ -33,6 +42,13 @@ export default function Navbar({currentUser} : {currentUser: User | null}) {
       setIsMid(false)
     }
   }, [setIsMid])
+
+  useEffect(() => {
+    if (searchP) {
+      const s = searchP.get("search") ;
+    setSearch(s !== null ? s : "")
+    }
+  }, [searchP])
   return (
     <div className='w-full sticky top-0'>
     <div className='w-full p-2 bg-white dark:bg-neutral-800 shadow-2xl dark:shadow-neutral-700 h-[60px] flex flex-row justify-between items-center gap-2'>
@@ -44,8 +60,12 @@ export default function Navbar({currentUser} : {currentUser: User | null}) {
         <span className='md:text-lg text-base font-bold'>Questiony</span>
       </div>
       <div className='hidden md:flex flex-row justify-center items-center w-[50%]'>
-        <input type='search' className='p-2 h-[40px] rounded-l-md w-full dark:bg-neutral-700 bg-neutral-300 focus:outline-none' placeholder='Search' />
-        <button className='dark:bg-neutral-700 bg-neutral-300 rounded-r-md h-[40px] p-2'><Search size={18} /></button>
+        <input type='search' onChange={(e) => setSearch(e.target.value)} className='p-2 h-[40px] rounded-l-md w-full dark:bg-neutral-700 bg-neutral-300 focus:outline-none' placeholder='Search' value={search} onKeyDown={(e) => {
+          if (e.key === "enter") {
+            saech()
+          }
+        }} />
+        <button className='dark:bg-neutral-700 bg-neutral-300 rounded-r-md h-[40px] p-2' onClick={() => saech()}><Search size={18} /></button>
       </div>
       <div className='hidden flex-row gap-2 justify-center items-center md:flex'>
         <ModeToggle />
@@ -64,10 +84,7 @@ export default function Navbar({currentUser} : {currentUser: User | null}) {
 
                                   <DropdownMenu>
             <DropdownMenuTrigger>
-                        <Avatar>
-  <AvatarImage src={currentUser.image ?? ""} />
-  <AvatarFallback>{fullname[0].charAt(0)} {fullname[1].charAt(0)}</AvatarFallback>
-</Avatar>
+<ProfiEImage currentUser={currentUser} fullname={fullname} />
             </DropdownMenuTrigger>
             <DropdownMenuContent>
               <DropdownMenuItem>Profile</DropdownMenuItem>
@@ -85,10 +102,7 @@ export default function Navbar({currentUser} : {currentUser: User | null}) {
         {currentUser !== null ? (
           <DropdownMenu>
             <DropdownMenuTrigger>
-                        <Avatar>
-  <AvatarImage src={currentUser.image ?? ""} />
-  <AvatarFallback>{fullname[0].charAt(0)} {fullname[1].charAt(0)}</AvatarFallback>
-</Avatar>
+<ProfiEImage currentUser={currentUser} fullname={fullname} />
             </DropdownMenuTrigger>
             <DropdownMenuContent>
               <DropdownMenuItem onClick={() => onOpen("addQuestion", {currentUser})}>Add Question</DropdownMenuItem>

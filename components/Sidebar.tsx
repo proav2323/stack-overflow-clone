@@ -11,6 +11,7 @@ import { usePathname, useRouter } from 'next/navigation'
 import { Button } from './ui/button'
 import { ModeToggle } from './ModeToggle'
 import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar'
+import ProfiEImage from './Profi.eImage'
 
 export default function Sidebar({currentUser, mobile, set} : {currentUser: User | null, mobile: boolean, set?: React.Dispatch<React.SetStateAction<boolean>>}) {
   const {theme} = useTheme()
@@ -80,10 +81,7 @@ export default function Sidebar({currentUser, mobile, set} : {currentUser: User 
         <ModeToggle />
         {currentUser && (
           <div className='flex flex-row justify-center items-center flex-1 w-full gap-2 z-10'>
-                                    <Avatar>
-  <AvatarImage src={currentUser.image ?? ""} />
-  <AvatarFallback>{fullname[0].charAt(0)} {fullname[1].charAt(0)}</AvatarFallback>
-</Avatar>
+<ProfiEImage currentUser={currentUser} fullname={fullname} />
             <span className='text-base font-semibold'>{currentUser.name}</span>
           </div>
         )}

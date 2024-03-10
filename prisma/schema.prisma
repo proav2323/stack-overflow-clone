@@ -56,6 +56,7 @@ model User {
   questions     questions[]
   answers       answers[]
   reply         reply[]
+  comment       comment[]
 }
 
 model questions {
@@ -67,8 +68,10 @@ model questions {
   askedBy     User      @relation(fields: [askedById], references: [id], onDelete: Cascade)
   answers     answers[]
   tags        String[]
-  createdAt   DateTime  @default(now())
-  updatedAT   DateTime  @updatedAt
+
+  createdAt DateTime  @default(now())
+  updatedAT DateTime  @updatedAt
+  comment   comment[]
 }
 
 model answers {
@@ -92,6 +95,17 @@ model reply {
   replyedBy   User     @relation(fields: [replyedById], references: [id], onDelete: Cascade)
   createdAt   DateTime @default(now())
   updatedAT   DateTime @updatedAt
+}
+
+model comment {
+  id          String    @id @default(uuid())
+  questionId  String
+  queston     questions @relation(fields: [questionId], references: [id], onDelete: Cascade)
+  text        String
+  commentById String
+  commentBy   User      @relation(fields: [commentById], references: [id], onDelete: Cascade)
+  createdAt   DateTime  @default(now())
+  updatedAT   DateTime  @updatedAt
 }
 
 model VerificationRequest {
