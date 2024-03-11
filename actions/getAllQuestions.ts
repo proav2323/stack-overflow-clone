@@ -20,6 +20,9 @@ export default async function getAllQuestio() {
         },
       },
     },
+    orderBy: {
+      createdAt: "desc",
+    },
   });
 
   if (questions.length === 0) {

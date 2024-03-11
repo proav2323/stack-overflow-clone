@@ -44,6 +44,9 @@ export default async function getSearchQuestions(search: string) {
         },
       },
     },
+    orderBy: {
+      createdAt: "desc"
+    }
   });
 
   if (questions.length === 0) {
