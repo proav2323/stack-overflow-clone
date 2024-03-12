@@ -1,31 +1,24 @@
 import { db } from "@/lib/PtismClient";
 
-export default async function getSearchQuestions(search: string, orderBy: "new" | "oldest" | "unanswered") {
+export default async function getSortedQuestions({
+  tag,
+  orderBy,
+}: {
+  tag: string;
+  orderBy: "new" | "unanswered" | "oldest";
+}) {
+  let query = {};
   let orderByq: { createdAt: "asc" | "desc" } = { createdAt: "desc" };
-  let query: any = {OR: [
-            {
-                title: {
-                    contains: search
-                }
-            },
-            {
-                description: {
-                    contains: search
-                }
-            },
-            {
-                expection: {
-                    contains: search
-                }
-            },
-            {
-               tags: {
-                    has: search
-                }
-            }
-        ]}
 
-          if (orderBy) {
+  if (tag) {
+    query = {
+      tags: {
+        has: tag,
+      },
+    };
+  }
+
+  if (orderBy) {
     if (orderBy === "new") {
       orderByq = {
         createdAt: "desc",
@@ -47,6 +40,7 @@ export default async function getSearchQuestions(search: string, orderBy: "new" 
       createdAt: "desc",
     };
   }
+
   const questions = await db.questions.findMany({
     where: query,
     include: {
@@ -67,9 +61,7 @@ export default async function getSearchQuestions(search: string, orderBy: "new" 
         },
       },
     },
-    orderBy: {
-      createdAt: "desc"
-    }
+    orderBy: orderByq,
   });
 
   if (questions.length === 0) {
