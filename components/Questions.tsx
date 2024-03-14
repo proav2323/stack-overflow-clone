@@ -19,7 +19,7 @@ export default function Questions({questions, currentUser, showButton = true, ti
   }
 
   return (
-    <div className="flex flex-col justify-start items-center gap-2 w-full px-2">
+    <div className="flex flex-col justify-start items-center gap-2 w-full px-2 my-2">
         <div className='w-full text-left'>
         <Heading title={hTitle} />
         </div>
