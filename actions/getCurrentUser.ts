@@ -18,6 +18,23 @@ export default async function getCurrentUser() {
       where: {
         email: session.user.email as string,
       },
+      include: {
+        answers: {
+          include: {
+            replies: {
+              include: {
+                replyedBy: true,
+              },
+            },
+            answeredBy: true,
+          },
+        },
+        comment: {
+          include: {
+            commentBy: true,
+          },
+        },
+      },
     });
 
     if (!user) {
