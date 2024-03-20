@@ -42,6 +42,29 @@ export default async function getSearchUsers(search: string) {
           commentBy: true,
         },
       },
+            questions: {
+        include: {
+          answers: {
+            include: {
+              replies: {
+                include: {
+                  replyedBy: true,
+                },
+              },
+              answeredBy: true,
+            },
+          },
+          askedBy: true,
+          comment: {
+            include: {
+              commentBy: true,
+            },
+          },
+        },
+        orderBy: {
+          createdAt: "desc",
+        },
+      },
     },
     orderBy: {
       createdAt: "desc"
