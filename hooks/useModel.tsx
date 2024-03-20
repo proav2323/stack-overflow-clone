@@ -2,7 +2,12 @@ import { questionsWithReplies } from "@/types";
 import { User } from "@prisma/client";
 import { create } from "zustand";
 
-export type modelType = "Login" | "register" | "addQuestion" | "editQuestion";
+export type modelType =
+  | "Login"
+  | "register"
+  | "addQuestion"
+  | "editQuestion"
+  | "updateUser";
 
 export interface modelStore {
   type: modelType | null;

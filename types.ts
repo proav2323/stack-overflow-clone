@@ -22,7 +22,8 @@ export type commentWithA = Omit<comment, "commentBy"> & {
   commentBy: User;
 };
 
-export type userWithT = Omit<User, "answers" | "comment"> & {
+export type userWithT = Omit<User, "answers" | "comment" | "questions"> & {
   answers: answersWithA[];
   comment: commentWithA[];
+  questions: questionsWithReplies[];
 };
