@@ -25,27 +25,24 @@ export default async function RootLayout({
 }>) {
   const user: User | null = await getCurrentUser();
   return (
-    <html lang="en">
-      <body className={inter.className}> 
-        <ThemeProvider
-            attribute="class"
-            defaultTheme="light"
-          >
-            <ModelProvider />
-      <Suspense fallback={<Loader />}>
+    <html lang='en'>
+      <body className={inter.className}>
+        <ThemeProvider attribute='class' defaultTheme='light'>
+          <ModelProvider />
+          <Suspense fallback={<Loader />}>
             <Toaster />
-            <div className="flex flex-row justify-center items-start w-full">
-              <div className="flex-[0.2] w-full hidden flex-col justify-start items-start md:flex">
+            <div className='flex flex-row justify-center items-start w-full'>
+              <div className='flex-[0.2] w-full hidden flex-col justify-start items-start md:flex'>
                 <Sidebar currentUser={user} mobile={false} />
               </div>
-              <div className="flex flex-col justify-center items-center flex-1 md:flex-[0.8] w-full">
-                   <Navbar currentUser={user} />
-                   {children}
+              <div className='flex flex-col justify-center items-center flex-1 md:flex-[0.8] w-full'>
+                <Navbar currentUser={user} />
+                {children}
               </div>
             </div>
-      </Suspense>
-          </ThemeProvider>
-        </body>
+          </Suspense>
+        </ThemeProvider>
+      </body>
     </html>
   );
 }
