@@ -5,6 +5,7 @@ import LoginModel from "../models/LoginModel";
 import RegisterModel from "../models/RegisterModel";
 import AddQuestionModel from "../models/AddQuestionModel";
 import EditQuestionModel from "../models/EditQuestions";
+import EditProfileModel from "../models/EditProfileModel";
 
 export default function ModelProvider() {
   return (
@@ -13,6 +14,7 @@ export default function ModelProvider() {
       <LoginModel />
       <RegisterModel />
       <EditQuestionModel />
+      <EditProfileModel />
     </>
   );
 }
